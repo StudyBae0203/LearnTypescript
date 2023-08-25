@@ -34,3 +34,27 @@ function func4(pt: { a: number; b?: string }) {
 
 func4({ a: 1, b: "a" });
 func4({ a: 1 });
+
+//Union Type
+function func5(a: string | number) {
+  console.log(a);
+  if (typeof a === "string") {
+    console.log("a is String");
+  }
+  if (typeof a === "number") {
+    console.log("a is Number");
+  }
+}
+
+func5(5);
+func5("w");
+
+//Union Example Array
+function func6(a: string | string[]) {
+  console.log(a);
+  if (Array.isArray(a)) {
+    a.map((value) => console.log(value));
+  } else {
+    console.log(a);
+  }
+}

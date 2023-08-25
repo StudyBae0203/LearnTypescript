@@ -66,6 +66,12 @@ type ObjectType = {
 };
 type UnionType = "number" | "string";
 
+//type extends
+
+type ExtendsType = ObjectType & {
+  c: boolean;
+};
+
 interface IObjectType {
   a: number;
   b: string;

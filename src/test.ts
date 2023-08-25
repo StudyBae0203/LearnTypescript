@@ -58,3 +58,22 @@ function func6(a: string | string[]) {
     console.log(a);
   }
 }
+
+type NormalType = number | string;
+type ObjectType = {
+  a: number;
+  b: string;
+};
+type UnionType = "number" | "string";
+
+interface IObjectType {
+  a: number;
+  b: string;
+}
+
+//interface extends
+
+interface IObjectType2 extends IObjectType {
+  c: number;
+  d: string;
+}

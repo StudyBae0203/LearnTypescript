@@ -1,0 +1,19 @@
+{
+  "name": "learntypescript",
+  "version": "1.0.0",
+  "description": "타입스크립트에 대해 탐구하고 공부하는 공간입니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --build", 
+  	"clean": "tsc --build --clean"
+  },
+  "author": "bae0203",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}

@@ -60,3 +60,22 @@ interface IExtendsInterface extends IObejctinInterface {
 interface는 같은 이름으로 두가지의 interface를 선언하면 **자동으로 확장이 되어 작동**이되는 반면
 type은 같은 이름으로 두가지의 type을 만들 수 없다.
 -> `개인적인 생각이지만 type은 값들이 확실할 때(컴포넌트 props, 서버에서 불러오는 값)에 쓰는 것이 좋을거 같고, interface는 나중에 확장을 해야될지도 모를때(styled-components)에 쓰는 것이 좋을거 같다`
+
+## 타입 리터럴 추론 (as const, as ..)
+
+### 기본 문법
+
+```javascript
+const Example1 = { url: "https://example.com", method: "GET" as "GET" };
+```
+
+이 문법은 **추론 범위를 줄이기 위해** 나온 문법입니다.
+예를 들어 원래라면 let a = "hello"는 string으로 추론을 하지만 특정한 값으로 추론범위를 줄이고 싶다면 사용하는 것이 타입 리터럴 추론입니다.
+사용방법은 간단합니다. 고정하고 싶은 변수의 뒤에 as 고정하고 싶은 값(추론하고 싶은 값)을 넣으면 됩니다.
+위의 예제는 `나는 항상 Example1에서 method의 리터럴(값)을 GET으로 사용할려고 합니다`라고 해석하시면 됩니다.
+
+만약 위의 모든 값을 고정해야된다 하면 밑의 방법처럼 쓰시면 됩니다.
+
+```javascript
+const Example1 = { url: "https://example.com", method: "GET" } as const;
+```

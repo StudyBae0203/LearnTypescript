@@ -59,12 +59,12 @@ function func6(a: string | string[]) {
   }
 }
 
-type NormalType = number | string;
+type NormalType = number;
 type ObjectType = {
   a: number;
   b: string;
 };
-type UnionType = "number" | "string";
+type UnionType = number | string;
 
 //type extends
 
@@ -83,3 +83,58 @@ interface IObjectType2 extends IObjectType {
   c: number;
   d: string;
 }
+
+//Type Assertions (타입 주장)
+const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
+//const myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");
+
+//const x = "hello" as number;
+//Error
+//Conversion of type 'string' to type 'number' may be a mistake
+//because neither type sufficiently overlaps with the other.
+//If this was intentional, convert the expression to 'unknown' first
+
+//Literal Type
+let Literal: "hello" = "hello";
+
+Literal = "hello";
+// Literal = "hi";
+//Error
+//Type '"hi"' is not assignable to type '"hello"'
+
+function func7(props: { a: string; b: "left" | "right" | "center" }) {
+  console.log(props.a);
+  console.log(props.b);
+}
+
+// func7({ a: "hi", b: "centre" });
+//Error
+//he expected type comes from property 'b'
+//which is declared here on type
+//'{ a: string; b: "left" | "right" | "center"; }'
+
+//Number Literal Type Example
+function compare(a: string, b: string): -1 | 0 | 1 {
+  return a === b ? 0 : a > b ? 1 : -1;
+}
+
+//Literal Type Example
+interface IExample {
+  num: number;
+}
+
+function func8(a: IExample | "none") {
+  console.log(a);
+}
+
+func8({ num: 10 });
+func8("none");
+// func8("hi");
+
+//Literal Inference
+const a = {
+  key1: "value",
+  key2: "value",
+} as const;
+
+const req = { url: "https://example.com", method: "GET" as "GET" };

@@ -17,3 +17,20 @@ function func1(name: string) {
 function func2(): string {
   return "";
 }
+
+//Object Type
+function func3(pt: { a: number; b: string }) {
+  console.log(pt.a);
+  console.log(pt.b);
+}
+
+func3({ a: 1, b: "a" });
+
+//Optional
+function func4(pt: { a: number; b?: string }) {
+  console.log(pt.a);
+  if (pt.b) console.log(pt.b);
+}
+
+func4({ a: 1, b: "a" });
+func4({ a: 1 });

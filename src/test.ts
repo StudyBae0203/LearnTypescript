@@ -138,3 +138,43 @@ const a = {
 } as const;
 
 const req = { url: "https://example.com", method: "GET" as "GET" };
+
+type Person = {
+  name: string;
+  age: number;
+};
+
+const func9 = (name: string, age: number = 10): Person => {
+  // const person: Person = { name : name,age :  age };
+  const person: Person = { name, age };
+  return person;
+};
+
+console.log(func9("jack")); // 'jack', 10
+
+//Create Object
+//제네릭을 사용하여 만든 오브젝트 만들어주는 함수
+type MakeObj<T> = {
+  key: string;
+  value: T;
+};
+
+const makeObj1 = <T>({ key, value }: MakeObj<T>) => ({ [key]: value });
+const makeObj2 = <T>(key: string, value: T) => ({ [key]: value });
+
+console.log(makeObj1<string>({ key: "name", value: "Bae" }));
+console.log(makeObj2<string>("name", "Bae"));
+
+const NewName: object = makeObj1<string>({ key: "name", value: "Bae" });
+
+let names: string[] = ["Jack", "Jane", " John"];
+//for(~ in ~) 문은 인덱스 값을 순회함
+for (const NameIndex in names) {
+  const NameValue = names[NameIndex];
+  console.log(NameValue);
+}
+
+//Generics
+const ArrayLength = <T>(array: T[]): number => array.length;
+
+ArrayLength<string>(["bae", "kim", "lee"]);

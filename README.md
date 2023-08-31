@@ -79,3 +79,19 @@ const Example1 = { url: "https://example.com", method: "GET" as "GET" };
 ```javascript
 const Example1 = { url: "https://example.com", method: "GET" } as const;
 ```
+
+## 제네릭 Generics
+
+### 기본 문법 (예제)
+
+```javascript
+const ArrayLength = <T>(array: T[]): number => array.length;
+
+ArrayLength < string > ["bae", "kim", "lee"];
+```
+
+형태 : `함수이름<타입>(매개변수)`
+이 문법은 타입을 변수처럼 취급하기 위해 나온 문법입니다.
+이 문법을 사용할때는 T라는 인자로 타입을 넘겨 매개변수처럼 사용하실 수 있습니다.
+예를 들어 위의 문법에서는 T라는 타입을 매개변수로 넘겨받아 함수에 들어오는 배열의 타입을
+직접 정의 할 수 있습니다.
